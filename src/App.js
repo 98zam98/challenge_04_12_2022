@@ -1,11 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import dateSlice from './state/reducer/dateSlice';
+import Store from './state/Store';
+import {useDispatch, useSelector} from 'react-redux';
 
 function App() {
+  const today =   useSelector(s=>s.date.date)
+  // Store.dispatch(dateSlice.actions.test())
+  const dispatch = useDispatch()
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -15,9 +19,19 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {
+          // Store.getState().date.date
+          today
+          }
         </a>
       </header>
+      <button onClick={()=>{
+        dispatch(dateSlice.actions.test())
+        console.log(
+          Store.getState().date.date)
+      }} > sdfdsaf </button>
+     
+     
     </div>
   );
 }
