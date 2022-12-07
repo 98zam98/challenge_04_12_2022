@@ -6,7 +6,7 @@ const right_limit = -left_limit;
 
 const lift_step = 50;
 const Schedule = () => {
-  const [Left, setLeft] = useState(850);
+  const [Left, setLeft] = useState(left_limit);
   return (
     <div className='Schedule' >
 

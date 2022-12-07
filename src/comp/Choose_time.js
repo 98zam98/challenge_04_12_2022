@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
-
-const choices = [ '9 am', '8 am', '7 am'];
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import dateSlice from '../state/reducer/dateSlice';
+import { add_hour2day, date_from_unix } from '../util/date_func';
 
 const Choose_time = () => {
 
+    const selector = useSelector(s => s.date)
+    const dispatch = useDispatch();
     
 
 
@@ -16,9 +17,16 @@ const Choose_time = () => {
             </div>
             <div className='choices' >
                 {
-                    choices.map(i=>(
-                        <div className='choice' key={i} >
-                            {i}
+                    selector.times.map(i=>(
+                        <div className='choice' key={i} 
+                        onClick={()=>{
+                            dispatch(dateSlice.actions.chose_time(i))
+                        }}
+                        >
+                            {/* {i} */}
+                            {date_from_unix(i).hour_12}
+                            {" "}
+                            {date_from_unix(i).hour_pm_am}
                         </div>))
                 }
             </div>

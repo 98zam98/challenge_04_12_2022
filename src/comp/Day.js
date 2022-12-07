@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import dateSlice from '../state/reducer/dateSlice';
 const days = []
 
 const Day = (x) => {
 
   const selector = useSelector(s=>s.date)
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // dispatch(dateSlice.actions.get_days(days))
   // console.log(selector.days);
 
@@ -33,7 +34,12 @@ const Day = (x) => {
       {
         // selector.days.filter(i => ((i.i >= x.start) & (i.i < x.end))).map(i => (
         selector.days.map(i => (
-          <div className='day_card' key={i.i} >
+          <div className='day_card' key={i.i}
+          onClick={()=>{
+            
+            dispatch(dateSlice.actions.chose_day(i.unix))
+          }}
+          >
             <div>{i.name}</div>
             <div>{
 

@@ -16,6 +16,8 @@ $color5: #D8D8D8;
 $fontFamily1: 'Lato';
 
 $fontWeight1: 700;
+$width1: 300px;
+// $width1: 70vw;
 
 .App {
   & {
@@ -84,33 +86,36 @@ $fontWeight1: 700;
             color: $color5;
             font-size: 50px;
           }
-.days{
-  width: 300px;
-  overflow: hidden;
-          .day_card_slider {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            // left:900px;
-            position: relative;
-            transition-property: left;
-            transition-duration: 500ms ;
-            transition-timing-function: ease-in-out;
 
-            .day_card {
+          .days {
+            width: $width1;
+            overflow: hidden;
+
+            .day_card_slider {
               display: flex;
-              flex-direction: column;
-              justify-content: center;
+              justify-content: space-around;
               align-items: center;
-              padding: 3px 10px;
-              margin: 3px 10px;
+              // left:900px;
+              position: relative;
+              transition-property: left;
+              transition-duration: 500ms;
+              transition-timing-function: ease-in-out;
+
+              .day_card {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 3px 10px;
+                margin: 3px 10px;
 
 
-              background: $color2;
-              box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.161);
-              border-radius: 10px;
+                background: $color2;
+                box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.161);
+                border-radius: 10px;
+              }
             }
-          }}
+          }
         }
       }
 
@@ -120,6 +125,8 @@ $fontWeight1: 700;
           display: flex;
           justify-content: space-around;
           align-items: center;
+          flex-wrap: wrap;
+          width: $width1;
 
           .choice {
             background: #FFFFFF;

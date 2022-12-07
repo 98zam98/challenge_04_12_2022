@@ -3,6 +3,7 @@
 
 
 export const unix_step_day = 86400;
+export const unix_step_hour = 3600;
 
 export const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -36,3 +37,20 @@ export const generate_days = () => {
     }
     return days;
 }
+
+// 1670543999-(1670543999%86400)
+// unix-(unix%unix_step_day)
+
+export const get_hour_from_unix=(unix)=>{
+    return unix%unix_step_day;
+}
+
+export const get_day_from_unix=(unix)=>{
+    return unix-get_hour_from_unix(unix);
+}
+
+export const add_hour2day=(hour,day)=>{
+    return get_day_from_unix(day)+get_hour_from_unix(hour);
+}
+
+

@@ -1,32 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit'
 import React from 'react'
-
-// newdate = year + "/" + month + "/" + day;
+import { add_hour2day } from '../../util/date_func';
 
 const initialState = {
-    // chosen_date : {year : 0, month : 0 , day:0}
-    chosen_date : "not_yet", // unix
-    confirmed_date : "not_yet", // unix
-    days : [],
-    avalability:{av_fr : "not_yet", unav_fr : "not_yet", unav_to : "not_yet", av_to : "not_yet"}
-    // date : "initialState"
+    chosen_day: "not_yet", // unix
+    chosen_time: "not_yet", // unix
+    confirmed_date: "not_yet", // unix
+    days: [],
+    times: []
 }
 
 const dateSlice = createSlice({
-    
-    name: 'cart',
+    name: 'date',
     initialState,
     reducers: {
-        chose_date:(s,a)=>{
-            s.chosen_date=a;
+        chose_day: (s, a) => {
+            s.chosen_day = a.payload;
         },
-        confirm_date:(s,a)=>{
-            s.chosen_date=a;
+        chose_time: (s, a) => {
+            s.chosen_time = a.payload;
         },
-        get_days:(s,a)=>{
-            // s.days.push(...a);
-            // s.days.push([...a.payload]);
-            s.days=a.payload;
+        confirm_date: (s) => {
+            try {
+                s.confirmed_date = add_hour2day(s.chosen_time, s.chosen_day)
+            } catch (e) {
+                console.log("choose both")
+            }
+        },
+        get_days: (s, a) => {
+            s.days = a.payload;
+        },
+        get_times: (s, a) => {
+            s.times = a.payload;
         },
     }
 })
