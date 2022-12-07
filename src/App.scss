@@ -11,6 +11,7 @@ $color1 : #4894FE;
 $color2: #FFFFFF;
 $color3: #E1E1E1;
 $color4: #000000;
+$color5: #D8D8D8;
 
 $fontFamily1: 'Lato';
 
@@ -80,15 +81,21 @@ $fontWeight1: 700;
 
           .left,
           .right {
-
-            color: #D8D8D8;
+            color: $color5;
             font-size: 50px;
           }
-
+.days{
+  width: 300px;
+  overflow: hidden;
           .day_card_slider {
             display: flex;
             justify-content: space-around;
             align-items: center;
+            // left:900px;
+            position: relative;
+            transition-property: left;
+            transition-duration: 500ms ;
+            transition-timing-function: ease-in-out;
 
             .day_card {
               display: flex;
@@ -103,7 +110,7 @@ $fontWeight1: 700;
               box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.161);
               border-radius: 10px;
             }
-          }
+          }}
         }
       }
 
